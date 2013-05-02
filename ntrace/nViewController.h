@@ -10,4 +10,6 @@
 
 @interface nViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextView *logTextArea;
+
 @end

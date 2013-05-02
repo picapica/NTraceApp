@@ -18,6 +18,7 @@
 		5739808417326B930074F7B3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5739808317326B930074F7B3 /* Default-568h@2x.png */; };
 		5739808717326B930074F7B3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5739808517326B930074F7B3 /* MainStoryboard.storyboard */; };
 		5739808A17326B930074F7B3 /* nViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5739808917326B930074F7B3 /* nViewController.m */; };
+		5739809D173277B50074F7B3 /* NetInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 5739809C173277B50074F7B3 /* NetInterface.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		5739808617326B930074F7B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		5739808817326B930074F7B3 /* nViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nViewController.h; sourceTree = "<group>"; };
 		5739808917326B930074F7B3 /* nViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nViewController.m; sourceTree = "<group>"; };
+		5739809B173277B50074F7B3 /* NetInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetInterface.h; sourceTree = "<group>"; };
+		5739809C173277B50074F7B3 /* NetInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetInterface.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 		5739807417326B930074F7B3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5739809B173277B50074F7B3 /* NetInterface.h */,
+				5739809C173277B50074F7B3 /* NetInterface.m */,
 				5739807517326B930074F7B3 /* ntrace-Info.plist */,
 				5739807617326B930074F7B3 /* InfoPlist.strings */,
 				5739807917326B930074F7B3 /* main.m */,
@@ -177,6 +182,7 @@
 				5739807A17326B930074F7B3 /* main.m in Sources */,
 				5739807E17326B930074F7B3 /* nAppDelegate.m in Sources */,
 				5739808A17326B930074F7B3 /* nViewController.m in Sources */,
+				5739809D173277B50074F7B3 /* NetInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +267,12 @@
 		5739808E17326B930074F7B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Liu Lantao (U878SC5TG9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ntrace/ntrace-Prefix.pch";
 				INFOPLIST_FILE = "ntrace/ntrace-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9A687767-1A55-460A-9B0A-BFE62682CC11";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -272,10 +280,12 @@
 		5739808F17326B930074F7B3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Liu Lantao (U878SC5TG9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ntrace/ntrace-Prefix.pch";
 				INFOPLIST_FILE = "ntrace/ntrace-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9A687767-1A55-460A-9B0A-BFE62682CC11";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -299,6 +309,7 @@
 				5739808F17326B930074F7B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
