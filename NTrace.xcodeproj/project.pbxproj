@@ -22,14 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5739806A17326B930074F7B3 /* ntrace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ntrace.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5739806A17326B930074F7B3 /* NTrace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTrace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5739806D17326B930074F7B3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5739806F17326B930074F7B3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5739807117326B930074F7B3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5739807517326B930074F7B3 /* ntrace-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ntrace-Info.plist"; sourceTree = "<group>"; };
+		5739807517326B930074F7B3 /* NTrace.app-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NTrace.app-Info.plist"; sourceTree = "<group>"; };
 		5739807717326B930074F7B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5739807917326B930074F7B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5739807B17326B930074F7B3 /* ntrace-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ntrace-Prefix.pch"; sourceTree = "<group>"; };
+		5739807B17326B930074F7B3 /* NTrace.app-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NTrace.app-Prefix.pch"; sourceTree = "<group>"; };
 		5739807C17326B930074F7B3 /* nAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nAppDelegate.h; sourceTree = "<group>"; };
 		5739807D17326B930074F7B3 /* nAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nAppDelegate.m; sourceTree = "<group>"; };
 		5739807F17326B930074F7B3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		5739806B17326B930074F7B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5739806A17326B930074F7B3 /* ntrace.app */,
+				5739806A17326B930074F7B3 /* NTrace.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,10 +101,10 @@
 			children = (
 				5739809B173277B50074F7B3 /* NetInterface.h */,
 				5739809C173277B50074F7B3 /* NetInterface.m */,
-				5739807517326B930074F7B3 /* ntrace-Info.plist */,
+				5739807517326B930074F7B3 /* NTrace.app-Info.plist */,
 				5739807617326B930074F7B3 /* InfoPlist.strings */,
 				5739807917326B930074F7B3 /* main.m */,
-				5739807B17326B930074F7B3 /* ntrace-Prefix.pch */,
+				5739807B17326B930074F7B3 /* NTrace.app-Prefix.pch */,
 				5739807F17326B930074F7B3 /* Default.png */,
 				5739808117326B930074F7B3 /* Default@2x.png */,
 				5739808317326B930074F7B3 /* Default-568h@2x.png */,
@@ -115,9 +115,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5739806917326B930074F7B3 /* ntrace */ = {
+		5739806917326B930074F7B3 /* NTrace */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5739808D17326B930074F7B3 /* Build configuration list for PBXNativeTarget "ntrace" */;
+			buildConfigurationList = 5739808D17326B930074F7B3 /* Build configuration list for PBXNativeTarget "NTrace" */;
 			buildPhases = (
 				5739806617326B930074F7B3 /* Sources */,
 				5739806717326B930074F7B3 /* Frameworks */,
@@ -127,9 +127,9 @@
 			);
 			dependencies = (
 			);
-			name = ntrace;
+			name = NTrace;
 			productName = ntrace;
-			productReference = 5739806A17326B930074F7B3 /* ntrace.app */;
+			productReference = 5739806A17326B930074F7B3 /* NTrace.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -142,7 +142,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Liu Lantao";
 			};
-			buildConfigurationList = 5739806517326B930074F7B3 /* Build configuration list for PBXProject "ntrace" */;
+			buildConfigurationList = 5739806517326B930074F7B3 /* Build configuration list for PBXProject "NTrace" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -154,7 +154,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5739806917326B930074F7B3 /* ntrace */,
+				5739806917326B930074F7B3 /* NTrace */,
 			);
 		};
 /* End PBXProject section */
@@ -269,9 +269,9 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Liu Lantao (U878SC5TG9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ntrace/ntrace-Prefix.pch";
-				INFOPLIST_FILE = "ntrace/ntrace-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "ntrace/NTrace-Prefix.pch";
+				INFOPLIST_FILE = "ntrace/NTrace.app-Info.plist";
+				PRODUCT_NAME = NTrace;
 				PROVISIONING_PROFILE = "9A687767-1A55-460A-9B0A-BFE62682CC11";
 				WRAPPER_EXTENSION = app;
 			};
@@ -282,9 +282,9 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Liu Lantao (U878SC5TG9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ntrace/ntrace-Prefix.pch";
-				INFOPLIST_FILE = "ntrace/ntrace-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "ntrace/NTrace-Prefix.pch";
+				INFOPLIST_FILE = "ntrace/NTrace.app-Info.plist";
+				PRODUCT_NAME = NTrace;
 				PROVISIONING_PROFILE = "9A687767-1A55-460A-9B0A-BFE62682CC11";
 				WRAPPER_EXTENSION = app;
 			};
@@ -293,7 +293,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5739806517326B930074F7B3 /* Build configuration list for PBXProject "ntrace" */ = {
+		5739806517326B930074F7B3 /* Build configuration list for PBXProject "NTrace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5739808B17326B930074F7B3 /* Debug */,
@@ -302,7 +302,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5739808D17326B930074F7B3 /* Build configuration list for PBXNativeTarget "ntrace" */ = {
+		5739808D17326B930074F7B3 /* Build configuration list for PBXNativeTarget "NTrace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5739808E17326B930074F7B3 /* Debug */,
