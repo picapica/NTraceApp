@@ -19,6 +19,8 @@
 		5739808717326B930074F7B3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5739808517326B930074F7B3 /* MainStoryboard.storyboard */; };
 		5739808A17326B930074F7B3 /* nViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5739808917326B930074F7B3 /* nViewController.m */; };
 		5739809D173277B50074F7B3 /* NetInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 5739809C173277B50074F7B3 /* NetInterface.m */; };
+		57FABAC8173371A600ABE0E5 /* nNTraceTasks.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FABAC7173371A600ABE0E5 /* nNTraceTasks.m */; };
+		57FABACA1733A39E00ABE0E5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57FABAC91733A39E00ABE0E5 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,9 @@
 		5739808917326B930074F7B3 /* nViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nViewController.m; sourceTree = "<group>"; };
 		5739809B173277B50074F7B3 /* NetInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetInterface.h; sourceTree = "<group>"; };
 		5739809C173277B50074F7B3 /* NetInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetInterface.m; sourceTree = "<group>"; };
+		57FABAC6173371A600ABE0E5 /* nNTraceTasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nNTraceTasks.h; sourceTree = "<group>"; };
+		57FABAC7173371A600ABE0E5 /* nNTraceTasks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nNTraceTasks.m; sourceTree = "<group>"; };
+		57FABAC91733A39E00ABE0E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57FABACA1733A39E00ABE0E5 /* SystemConfiguration.framework in Frameworks */,
 				5739806E17326B930074F7B3 /* UIKit.framework in Frameworks */,
 				5739807017326B930074F7B3 /* Foundation.framework in Frameworks */,
 				5739807217326B930074F7B3 /* CoreGraphics.framework in Frameworks */,
@@ -59,6 +65,7 @@
 		5739806117326B930074F7B3 = {
 			isa = PBXGroup;
 			children = (
+				57FABAC91733A39E00ABE0E5 /* SystemConfiguration.framework */,
 				5739807317326B930074F7B3 /* ntrace */,
 				5739806C17326B930074F7B3 /* Frameworks */,
 				5739806B17326B930074F7B3 /* Products */,
@@ -99,6 +106,8 @@
 		5739807417326B930074F7B3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				57FABAC6173371A600ABE0E5 /* nNTraceTasks.h */,
+				57FABAC7173371A600ABE0E5 /* nNTraceTasks.m */,
 				5739809B173277B50074F7B3 /* NetInterface.h */,
 				5739809C173277B50074F7B3 /* NetInterface.m */,
 				5739807517326B930074F7B3 /* NTrace.app-Info.plist */,
@@ -183,6 +192,7 @@
 				5739807E17326B930074F7B3 /* nAppDelegate.m in Sources */,
 				5739808A17326B930074F7B3 /* nViewController.m in Sources */,
 				5739809D173277B50074F7B3 /* NetInterface.m in Sources */,
+				57FABAC8173371A600ABE0E5 /* nNTraceTasks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
