@@ -7,6 +7,7 @@
 //
 
 #import "nNTraceTasks.h"
+#import <time.h>
 
 @implementation nNTraceTasks
 
@@ -94,6 +95,29 @@
 
 + (NSMutableDictionary *)fetch:(NSString *)file {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
+
+    NSMutableURLRequest *testRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:file] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:5.0];
+
+    NSURLResponse *testResponse;
+    NSError *testError;
+
+
+    NSDate *date = [NSDate date];
+    NSData *testData = [NSURLConnection sendSynchronousRequest:testRequest returningResponse:&testResponse error:&testError];
+    double timePassed_seconds = [date timeIntervalSinceNow] * -1.0;
+    [result setValue:[NSString stringWithFormat:@"%.3fs", timePassed_seconds] forKey:@"time"];
+
+    NSHTTPURLResponse *response = (NSHTTPURLResponse *)testResponse;
+    int statusCode = [response statusCode];
+    [result setValue:[NSString stringWithFormat:@"%d", statusCode] forKey:@"status"];
+
+    int errorCode = testError.code;
+    [result setValue:[NSString stringWithFormat:@"%d", errorCode] forKey:@"code"];
+
+    NSString *responseStr = [[NSString alloc] initWithData:testData encoding:NSASCIIStringEncoding];
+    int length = [responseStr length];
+    [result setValue:[NSString stringWithFormat:@"%d", length] forKey:@"body_length"];
+
     [result setObject:[NSString stringWithFormat:@"fetch %@", file] forKey:@"description"];
 
     return result;
