@@ -8,6 +8,7 @@
 
 #import "nViewController.h"
 #import "NetInterface.h"
+#import "nNTraceTasks.h"
 
 @interface nViewController ()
 
@@ -21,7 +22,7 @@
     NSString *logcache = area.text;
     
     area.text = [NSString stringWithFormat:@"%@ %@\n", logcache, logmessage];
-    [area scrollRangeToVisible:NSMakeRange(logcache.length, logmessage.length)];
+    [area scrollRangeToVisible:NSMakeRange(logcache.length + logmessage.length, 0)];
 }
 
 - (NSString *)timestamp {
@@ -49,16 +50,15 @@
 
 - (void)printInterfaceList{
     NSMutableDictionary* allInterfaceList = [NetInterface getInterfaceList];
-    for (NSString* name in allInterfaceList)
+    for (NSString *name in allInterfaceList)
     {
         [self appendLog:[NSString stringWithFormat:@"Interface %@ : %@", name, [allInterfaceList objectForKey:name]] to:logTextArea];
     }
 }
 
 - (IBAction)btnExecCheckClicked:(id)sender {
-    [self appendLog:@"手动执行检测" to:logTextArea timestamp:true];
-
-    [self printInterfaceList];
+    NSDictionary *result = [nNTraceTasks executeTasks];
+    [self appendLog:[NSString stringWithFormat:@"手动执行检测: %@", result] to:logTextArea timestamp:true];
 }
 
 - (void)viewDidLoad
