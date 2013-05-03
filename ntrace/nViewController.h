@@ -12,4 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *logTextArea;
 
+- (void)printInterfaceList;
+
+- (IBAction)btnExecCheckClicked:(id)sender;
+
 @end

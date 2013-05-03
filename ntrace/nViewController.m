@@ -19,10 +19,32 @@
 
 - (void)appendLog:(NSString *)logmessage to:(UITextView *)area {
     NSString *logcache = area.text;
-    NSLog(@"%@\n", logcache);
     
-    NSLog(@"%@\n", [logcache stringByAppendingString:logmessage]);
-    area.text = [[logcache stringByAppendingString:logmessage] stringByAppendingString:@"\n"];
+    area.text = [NSString stringWithFormat:@"%@ %@\n", logcache, logmessage];
+    [area scrollRangeToVisible:NSMakeRange(logcache.length, logmessage.length)];
+}
+
+- (NSString *)timestamp {
+    NSDateFormatter *formatter;
+    NSString        *dateString;
+
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
+
+    dateString = [formatter stringFromDate:[NSDate date]];
+
+    return dateString;
+}
+
+- (void)appendLog:(NSString *)logmessage to:(UITextView *)area timestamp:(BOOL)timestamp_enabled {
+    if (timestamp_enabled) {
+        logmessage = [NSString stringWithFormat:@"[%@] %@", [self timestamp], logmessage];
+        [self appendLog:logmessage to:area];
+    }
+    else
+    {
+        [self appendLog:logmessage to:area];
+    }
 }
 
 - (void)printInterfaceList{
@@ -31,6 +53,12 @@
     {
         [self appendLog:[NSString stringWithFormat:@"Interface %@ : %@", name, [allInterfaceList objectForKey:name]] to:logTextArea];
     }
+}
+
+- (IBAction)btnExecCheckClicked:(id)sender {
+    [self appendLog:@"手动执行检测" to:logTextArea timestamp:true];
+
+    [self printInterfaceList];
 }
 
 - (void)viewDidLoad
