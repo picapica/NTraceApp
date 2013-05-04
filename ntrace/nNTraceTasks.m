@@ -7,6 +7,7 @@
 //
 
 #import "nNTraceTasks.h"
+#import "SettingStore.h"
 #import <time.h>
 
 @implementation nNTraceTasks
@@ -17,7 +18,7 @@
 
 + (NSDictionary *)fetchTasks {
     NSError *error;
-    NSString *url_string = [NSString stringWithFormat:@"http://10.4.16.68/ntrace/api/task/%d", 1];
+    NSString *url_string = [NSString stringWithFormat:@"%@/task/%@?_uid=%@", [SettingStore Values].apiServerTxt, [SettingStore Values].taskIDTxt, [SettingStore Values].userIdentityTxt];
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url_string]];
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
@@ -82,7 +83,7 @@
 
     SCNetworkConnectionFlags flags = 0;
     if (SCNetworkReachabilityGetFlags(SCNetworkReachabilityCreateWithName(NULL, [host cStringUsingEncoding:NSUTF8StringEncoding]), &flags) && flags > 0) {
-        // NSLog(@"Host is reachable: %d", flags);
+        // NSLog(@"Host %@ is reachable: %d", host, flags);
         [result setObject:@"yes" forKey:@"reachable"];
     }
     else {        

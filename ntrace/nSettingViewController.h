@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SettingStore.h"
 
 @interface nSettingViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UITextField *apiServerTxt;
 @property (weak, nonatomic) IBOutlet UITextField *taskIDTxt;
 @property (weak, nonatomic) IBOutlet UITextField *userIdentityTxt;
 
-- (IBAction)saveBtnCliecked:(id)sender;
+- (IBAction)saveBtnClicked:(id)sender;
+- (IBAction)resetBtnClicked:(id)sender;
 
 @end

@@ -31,6 +31,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
+    [self loadSettings];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,8 +41,38 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)saveBtnCliecked:(id)sender {
-    NSLog(@"saveBtnCliecked");
+- (IBAction)saveBtnClicked:(id)sender {
+    [self saveSettings];
+    
     [self.view endEditing:YES];
 }
+
+- (IBAction)resetBtnClicked:(id)sender {
+    [SettingStore restoreDefaults];
+
+    [self loadSettings];
+
+    [self.view endEditing:YES];
+}
+
+
+- (void)loadSettings
+{
+    // load settings
+    apiServerTxt.text = [SettingStore Values].apiServerTxt;
+    taskIDTxt.text = [SettingStore Values].taskIDTxt;
+    userIdentityTxt.text = [SettingStore Values].userIdentityTxt;
+    
+    // NSLog(@"loadSettings. %@ : %@; %@ : %@; %@ : %@;", @"apiServer", apiServerTxt.text, @"taskID", taskIDTxt.text, @"userIdentity", userIdentityTxt.text);
+}
+
+- (void)saveSettings
+{
+    // NSLog(@"saveBtnCliecked. %@ : %@; %@ : %@; %@ : %@;", @"apiServer", apiServerTxt.text, @"taskID", taskIDTxt.text, @"userIdentity", userIdentityTxt.text);
+    
+    [SettingStore Values].apiServerTxt = apiServerTxt.text;
+    [SettingStore Values].taskIDTxt = taskIDTxt.text;
+    [SettingStore Values].userIdentityTxt = userIdentityTxt.text;
+}
+
 @end
