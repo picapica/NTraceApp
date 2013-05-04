@@ -18,6 +18,7 @@
 
 + (NSDictionary *)fetchTasks;
 + (NSMutableDictionary *)executeTasks;
++ (void)postResults:(NSData *)data;
 
 + (NSMutableDictionary *)ping:(NSString *)ip;
 + (NSMutableDictionary *)fetch:(NSString *)url;
