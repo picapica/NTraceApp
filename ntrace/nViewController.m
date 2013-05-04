@@ -58,7 +58,7 @@
 
 - (IBAction)btnExecCheckClicked:(id)sender {
     NSDictionary *result = [nNTraceTasks executeTasks];
-    [self appendLog:[NSString stringWithFormat:@"手动执行检测: %@", result] to:logTextArea timestamp:true];
+    [self appendLog:[NSString stringWithFormat:@"执行检测: %@", result] to:logTextArea timestamp:true];
 }
 
 - (void)viewDidLoad
