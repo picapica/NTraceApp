@@ -43,6 +43,21 @@
     return results;
 }
 
++ (void)postResults:(NSData *)data
+{
+    NSError *error;
+    NSString *url_string = [NSString stringWithFormat:@"%@/task/%@/post?_uid=%@",  [SettingStore Values].apiServerTxt, [SettingStore Values].taskIDTxt, [SettingStore Values].userIdentityTxt];
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url_string] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:15.0];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:data];
+
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    
+    NSLog(@"post response : %@ ; error : %@", response, error);
+}
+
+
 + (NSMutableDictionary *)execute:(NSDictionary *)task {
     
     // NSLog(@"execute task: %@", task);
@@ -74,7 +89,7 @@
             [result setObject:@"unknown_task_type" forKey:@"status"];
             break;
     }
-    
+
     return result;
 }
 
@@ -90,7 +105,7 @@
         [result setObject:@"no" forKey:@"reachable"];
     }
     [result setObject:[NSString stringWithFormat:@"ping %@", host] forKey:@"description"];
-    
+
     return result;
 }
 

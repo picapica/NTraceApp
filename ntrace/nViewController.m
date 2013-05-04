@@ -58,7 +58,12 @@
 
 - (IBAction)btnExecCheckClicked:(id)sender {
     NSDictionary *result = [nNTraceTasks executeTasks];
+
     [self appendLog:[NSString stringWithFormat:@"执行检测: %@", result] to:logTextArea timestamp:true];
+
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:&error];
+    [nNTraceTasks postResults:jsonData];
 }
 
 - (void)viewDidLoad
