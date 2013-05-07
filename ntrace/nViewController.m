@@ -57,12 +57,24 @@
 }
 
 - (IBAction)btnExecCheckClicked:(id)sender {
-    NSDictionary *result = [nNTraceTasks executeTasks];
+    NSMutableDictionary *result = [nNTraceTasks executeTasks];
+    NSMutableDictionary *interfaces = [NSMutableDictionary dictionary];
 
-    [self appendLog:[NSString stringWithFormat:@"执行检测: %@", result] to:logTextArea timestamp:true];
+    NSDictionary* allInterfaceList = [NetInterface getInterfaceList];
+    for (NSString *name in allInterfaceList)
+    {
+        [interfaces setObject:[allInterfaceList objectForKey:name] forKey:name];
+    }
+    
+    [result setObject:interfaces forKey:@"interfaces"];
 
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:&error];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:result options:0 error:&error];
+
+    // show
+    [self appendLog:[NSString stringWithFormat:@"执行检测: %@", result] to:logTextArea timestamp:true];
+
+    // post data
     [nNTraceTasks postResults:jsonData];
 }
 

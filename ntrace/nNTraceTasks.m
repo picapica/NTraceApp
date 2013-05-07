@@ -7,6 +7,7 @@
 //
 
 #import "nNTraceTasks.h"
+#import "NetInterface.h"
 #import "SettingStore.h"
 #import <time.h>
 
