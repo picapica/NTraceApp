@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5707FDA2174B7D250097154C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5707FDA1174B7D250097154C /* MobileCoreServices.framework */; };
 		5739806E17326B930074F7B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5739806D17326B930074F7B3 /* UIKit.framework */; };
 		5739807017326B930074F7B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5739806F17326B930074F7B3 /* Foundation.framework */; };
 		5739807217326B930074F7B3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5739807117326B930074F7B3 /* CoreGraphics.framework */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5707FDA1174B7D250097154C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5739806A17326B930074F7B3 /* NTrace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTrace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5739806D17326B930074F7B3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5739806F17326B930074F7B3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5707FDA2174B7D250097154C /* MobileCoreServices.framework in Frameworks */,
 				573A94C21734A6F900154882 /* CoreData.framework in Frameworks */,
 				57FABACA1733A39E00ABE0E5 /* SystemConfiguration.framework in Frameworks */,
 				5739806E17326B930074F7B3 /* UIKit.framework in Frameworks */,
@@ -76,6 +79,7 @@
 		5739806117326B930074F7B3 = {
 			isa = PBXGroup;
 			children = (
+				5707FDA1174B7D250097154C /* MobileCoreServices.framework */,
 				573A94C11734A6F900154882 /* CoreData.framework */,
 				57FABAC91733A39E00ABE0E5 /* SystemConfiguration.framework */,
 				5739807317326B930074F7B3 /* ntrace */,

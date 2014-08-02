@@ -36,8 +36,6 @@
                 NSString* name = [NSString stringWithUTF8String:temp_addr->ifa_name];
                 NSString* address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
                 
-                // NSLog(@"if: %@ %@", name, address);
-
                 [arrayOfAllInterfaces addObject:name];
                 [dictOfAllInterfaces setObject:address forKey:name];
             }
@@ -69,7 +67,6 @@
             if( temp_addr->ifa_addr->sa_family == AF_INET) {
                 NSLog(@"if; %@ %@", [NSString stringWithUTF8String:temp_addr->ifa_name],
                       [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)]);
-                // Check if interface is en0 which is the wifi connection on the iPhone
                 if ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:interface]) {
                     // Get NSString from C String
                     address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];

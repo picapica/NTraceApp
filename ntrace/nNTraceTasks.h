@@ -11,6 +11,7 @@
 
 #define TASK_PING  1
 #define TASK_FETCH 2
+#define TASK_DNSQUERY 3
 
 @interface nNTraceTasks : NSObject
 
@@ -22,5 +23,5 @@
 
 + (NSMutableDictionary *)ping:(NSString *)ip;
 + (NSMutableDictionary *)fetch:(NSString *)url;
-
++ (NSMutableDictionary *)dnsQuery:(NSString* )domainName;
 @end

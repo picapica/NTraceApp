@@ -11,13 +11,25 @@
 #import "SettingStore.h"
 #import <time.h>
 
+#include <CFHost.h>
+
+#include <netdb.h>
+#include <arpa/inet.h>
+
+//#include <arpa/inet.h>
+//#include <ifaddrs.h>
+//#include <resolv.h>
+//#include <dns.h>
+
 @implementation nNTraceTasks
 
-+ (NSDictionary *)tasks {
++ (NSDictionary *)tasks
+{
     return [nNTraceTasks fetchTasks];
 }
 
-+ (NSDictionary *)fetchTasks {
++ (NSDictionary *)fetchTasks
+{
     NSError *error;
     NSString *url_string = [NSString stringWithFormat:@"%@/task/%@?_uid=%@", [SettingStore Values].apiServerTxt, [SettingStore Values].taskIDTxt, [SettingStore Values].userIdentityTxt];
 
@@ -29,7 +41,8 @@
     return tasks;
 }
 
-+ (NSMutableDictionary *)executeTasks {
++ (NSMutableDictionary *)executeTasks
+{
     NSDictionary *tasks = [nNTraceTasks tasks];
     NSMutableDictionary *results = [NSMutableDictionary dictionary];
 
@@ -59,13 +72,15 @@
 }
 
 
-+ (NSMutableDictionary *)execute:(NSDictionary *)task {
++ (NSMutableDictionary *)execute:(NSDictionary *)task
+{
     
     // NSLog(@"execute task: %@", task);
 
     NSDictionary *type_list = [NSDictionary dictionaryWithObjectsAndKeys:
                                @TASK_PING, @"ping",
                                @TASK_FETCH, @"fetch",
+                               @TASK_DNSQUERY, @"dnsquery",
                                nil];
 
     NSMutableDictionary *result;
@@ -85,6 +100,12 @@
             // fetch
             result = [nNTraceTasks fetch:[task objectForKey:@"file"]];
             break;
+            
+        case TASK_DNSQUERY:
+            // dns
+//            [result setObject:@"dnsquery_received" forKey:@"status"];
+            result = [nNTraceTasks dnsQuery:[task objectForKey:@"host"]];
+            break;
 
         default:
             [result setObject:@"unknown_task_type" forKey:@"status"];
@@ -94,7 +115,8 @@
     return result;
 }
 
-+ (NSMutableDictionary *)ping:(NSString *)host {
++ (NSMutableDictionary *)ping:(NSString *)host
+{
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
     SCNetworkConnectionFlags flags = 0;
@@ -110,7 +132,8 @@
     return result;
 }
 
-+ (NSMutableDictionary *)fetch:(NSString *)file {
++ (NSMutableDictionary *)fetch:(NSString *)file
+{
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
     NSMutableURLRequest *testRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:file] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:5.0];
@@ -137,6 +160,96 @@
 
     [result setObject:[NSString stringWithFormat:@"fetch %@", file] forKey:@"description"];
 
+    return result;
+}
+
+//+ (NSString *) getDNSServers
+//{
+//    NSMutableString *addresses = [[NSMutableString alloc]initWithString:@"DNS Addresses \n"];
+//    
+//    res_state res = malloc(sizeof(struct __res_state));
+//    
+//    int result = res_ninit(res);
+//    
+//    if ( result == 0 )
+//    {
+//        for ( int i = 0; i < res->nscount; i++ )
+//        {
+//            NSString *s = [NSString stringWithUTF8String :  inet_ntoa(res->nsaddr_list[i].sin_addr)];
+//            [addresses appendFormat:@"%@\n",s];
+//            NSLog(@"%@",s);
+//        }
+//    }
+//    else
+//    {
+//        [addresses appendString:@" res_init result != 0"];
+//    }
+//    
+//    return addresses;
+//}
+
++ (void)testDNS
+{
+    NSLog(@"testDNS");
+    NSString *hostname = @"www.renren.com";
+
+    SCNetworkConnectionFlags flags = 0;
+    if (SCNetworkReachabilityGetFlags(SCNetworkReachabilityCreateWithName(NULL, [hostname cStringUsingEncoding:NSUTF8StringEncoding]), &flags) && flags > 0) {
+        // NSLog(@"Host %@ is reachable: %d", hostname, flags);
+
+        Boolean result;
+        CFHostRef hostRef;
+        NSArray *addresses;
+        
+        hostRef = CFHostCreateWithName(kCFAllocatorDefault, (__bridge CFStringRef)hostname);
+//        if (hostRef) {
+//            result = CFHostStartInfoResolution(hostRef, kCFHostAddresses, NULL); // pass an error instead of NULL here to find out why it failed
+//            if (result == TRUE) {
+//                addresses = (__bridge NSArray*)CFHostGetAddressing(hostRef, &result);
+//                [addresses enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//                    NSString *strDNS = [NSString stringWithUTF8String:inet_ntoa(*((__bridge struct in_addr *)obj))];
+//                    NSLog(@"Resolved %d->%@", idx, strDNS);
+//                }];
+//            }
+//        }
+
+    }
+    else {
+    }
+}
+
++ (NSMutableDictionary *)dnsQuery:(NSString* )domainName
+{
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+
+    [nNTraceTasks testDNS];
+
+	// Get host entry info for given host
+	struct hostent *remoteHostEnt = gethostbyname([domainName cStringUsingEncoding:NSUTF8StringEncoding]);
+
+//    struct in_addr *tempInAddr;
+//    char *tempAddr;
+//    for (int i = 0; remoteHostEnt->h_addr_list[i]; i++)
+//    {
+//        tempInAddr = (struct in_addr *) remoteHostEnt->h_addr_list[i];
+//        tempAddr = inet_ntoa(*tempInAddr);
+//        NSLog(@"%d %s", i, tempAddr);
+//    }
+
+	// Get address info from host entry
+	struct in_addr *remoteInAddr = (struct in_addr *) remoteHostEnt->h_addr_list[0];
+	// Convert numeric addr to ASCII string
+	char *sRemoteInAddr = inet_ntoa(*remoteInAddr);
+
+	NSString *s = [[NSString alloc]
+                   initWithFormat:
+                   @"Remote IP: %s",
+                   sRemoteInAddr];
+    
+    [result setObject:s forKey:@"result"];
+
+    [result setObject:[NSString stringWithFormat:@"DNS query %@", domainName] forKey:@"description"];
+    
     return result;
 }
 
